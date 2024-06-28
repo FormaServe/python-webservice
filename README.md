@@ -29,7 +29,7 @@ Insure that you use PIP to install the following packages (pip install bottle et
 
 ## Running
 
-Start the server by running, in an IBM i shell session;
+Start the server by running;
 
 ```
 python server.py
