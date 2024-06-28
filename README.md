@@ -12,9 +12,8 @@ It requires a copy of the SQLite sample database chinook which can be found in t
 
 ## Features
 
-* Provides a webservice application
+* Provides a web-service application
 * Provides four endpoints
-* Allows for column sorting.
 
 ## Installation
 
