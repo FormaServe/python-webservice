@@ -4,12 +4,16 @@
 
 This repository showcases FormaServe’s training capabilities and provides a simple web-service application.
 
+This project is a Flask web service application that interfaces with the Chinook SQLite database. It provides endpoints to retrieve information about tracks and employees from the database and includes custom error handling for pages not found.
+
 This will run on the IFS of the IBM i.  Requires python and sqlite open-source packages installed.
+
+It requires a copy of the SQLite sample database chinook which can be found in the data directory.  If you require a fresh copy of the SQLite sample database it can be found [here]([http://sqlite](https://www.sqlitetutorial.net/sqlite-sample-database/))
 
 ## Features
 
 * Provides a webservice application
-* Provides endpoints for
+* Provides four endpoints
 * Allows for column sorting.
 
 ## Installation
@@ -20,23 +24,54 @@ This will run on the IFS of the IBM i.  Requires python and sqlite open-source p
 
 **It is advised to check-out & run the section on virtual environments with python before proceeding with the install of this app.**
 
+## Endpoints
+
+### Get Employee by ID
+
+URL: /employee/<int:employee_id>
+Method: GET
+Description: Retrieves a specific employee by their EmployeeId.
+Response: JSON object representing the employee, or a 404 error if not found.
+
+### Get All Employees
+
+URL: /employees
+Method: GET
+Description: Retrieves all employees from the employees table.
+Response: JSON array of employee objects.
+
+## Get Track by ID
+
+URL: /track/<int:track_id>
+Method: GET
+Description: Retrieves a specific track by its TrackId.
+Response: JSON object representing the track, or a 404 error if not found.
+
+## Get All Tracks
+
+URL: /tracks
+Method: GET
+Description: Retrieves all tracks from the tracks table.
+Response: JSON array of track objects.
+
 ## Pre-req's
 
 Insure that you use PIP to install the following packages (pip install bottle etc).
 
-- flask
-- jsonify
+* flask
+* jsonify
 
 ## Running
 
 Start the server by running;
 
-```
+```bash
 python server.py
 ```
 
 then point your browser to the following;
-```
+
+```bash
 your_server:5050
 ```
 
@@ -52,6 +87,7 @@ Use the venv module to create a virtual environment inside the project folder. R
 # Run the Python command to create a virtual environment in the current directory
 python -m venv --system-site-packages ~/.venv
 ```
+
 Replace .venv with your preferred name for the virtual environment.
 
 ### Activate the Virtual Environment
@@ -73,6 +109,18 @@ deactivate
 ```
 
 **Remember to activate it whenever you work on your project. 😊**
+
+## Error Handling
+
+The application includes custom error handling for 404 Not Found errors.
+
+### Custom 404 Error Page
+
+When an endpoint is not found, the application returns a custom JSON response indicating the error.
+
+## Contributing
+
+Contributions are welcome! Please fork the repository and submit a pull request with your changes.
 
 ## License
 
