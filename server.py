@@ -80,5 +80,16 @@ def get_employee_by_id(employee_id):
     # Convert the query result to a dictionary
     return jsonify(dict(employee))
 
+# Custom 404 error handler
+@app.errorhandler(404)
+def page_not_found(e):
+    return jsonify({'error': 'Endpoint not found'}), 404
+
+# Custom 500 error handler
+@app.errorhandler(500)
+def internal_server_error(e):
+    return jsonify({'error': 'Internal error, check logs'}), 500
+
+# mainline
 if __name__ == "__main__":
-    app.run(host='localhost', port=5000, debug=True)
+    app.run(host='localhost', port=5050, debug=True)
