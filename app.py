@@ -1,0 +1,84 @@
+from flask import Flask, jsonify
+import sqlite3
+
+app = Flask(__name__)
+
+# Function to get a database connection
+def get_db_connection():
+    conn = sqlite3.connect('./data/chinook.db')
+    conn.row_factory = sqlite3.Row  # This allows us to access the columns by name
+    return conn
+
+# Endpoint: Get all employees
+# http://localhost:5000/employees
+@app.route('/employees', methods=['GET'])
+def get_employees():
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    # Execute a query to retrieve all employees
+    cursor.execute("SELECT EmployeeId, LastName, FirstName, Title, BirthDate, HireDate, Address, City, State, Country, PostalCode, Phone, Fax, Email FROM employees")
+    employees = cursor.fetchall()
+
+    # Convert the query result to a list of dictionaries
+    employees_list = [dict(employee) for employee in employees]
+
+    conn.close()
+    return jsonify(employees_list)
+
+# Endpoint: Get all tracks
+# http://localhost:5000/tracks
+@app.route('/tracks', methods=['GET'])
+def get_tracks():
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    # Execute a query to retrieve all tracks
+    cursor.execute("SELECT TrackId, Name, Composer, Milliseconds, Bytes, UnitPrice FROM tracks")
+    tracks = cursor.fetchall()
+
+    # Convert the query result to a list of dictionaries
+    tracks_list = [dict(track) for track in tracks]
+
+    conn.close()
+    return jsonify(tracks_list)
+
+# Endpoint: Get a specific track by ID
+# http://localhost:5000/track/1
+# track not found error http://localhost:5000/track/999999999999999999
+@app.route('/track/<int:track_id>', methods=['GET'])
+def get_track_by_id(track_id):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    # Execute a query to retrieve the track by ID
+    cursor.execute("SELECT TrackId, Name, Composer, Milliseconds, Bytes, UnitPrice FROM tracks WHERE TrackId = ?", (track_id,))
+    track = cursor.fetchone()
+
+    conn.close()
+    if track is None:
+        return jsonify({'error': 'Track not found'}), 404
+
+    return jsonify(dict(track))
+
+# Endpoint: Get an individual employee by EmployeeId
+# http://localhost:5000/employee/1
+@app.route('/employee/<int:employee_id>', methods=['GET'])
+def get_employee_by_id(employee_id):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    # Execute a query to retrieve the employee by EmployeeId
+    cursor.execute("SELECT EmployeeId, LastName, FirstName, Title, BirthDate, HireDate, Address, City, State, Country, PostalCode, Phone, Fax, Email FROM employees WHERE EmployeeId = ?", (employee_id,))
+    employee = cursor.fetchone()
+
+    conn.close()
+
+    if employee is None:
+        return jsonify({'error': 'Employee not found'}), 404
+
+    # Convert the query result to a dictionary
+    return jsonify(dict(employee))
+
+if __name__ == "__main__":
+    app.run(host='localhost', port=5000, debug=True)
