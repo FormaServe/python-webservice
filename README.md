@@ -80,7 +80,7 @@ As with all python projects, it is recommended to run this application in a virt
 
 ### Create the Virtual Environment
 
-Use the venv module to create a virtual environment inside the project folder. Run the following command:
+Use the venv module to create a virtual environment inside the project folder. Run the following command:  
 
 ```bash
 # Run the Python command to create a virtual environment in the current directory
