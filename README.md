@@ -40,28 +40,28 @@ pip install flask jsonify
 URL: /employee/<int:employee_id>\
 Method: GET\
 Description: Retrieves a specific employee by their EmployeeId.\
-Response: JSON object representing the employee, or a 404 error if not found.\
+Response: JSON object representing the employee, or a 404 error if not found.
 
 ### Get All Employees
 
 URL: /employees\
 Method: GET\
 Description: Retrieves all employees from the employees table.\
-Response: JSON array of employee objects.\
+Response: JSON array of employee objects.
 
 ## Get Track by ID
 
 URL: /track/<int:track_id>\
 Method: GET\
 Description: Retrieves a specific track by its TrackId.\
-Response: JSON object representing the track, or a 404 error if not found.\
+Response: JSON object representing the track, or a 404 error if not found.
 
 ## Get All Tracks
 
 URL: /tracks\
 Method: GET\
 Description: Retrieves all tracks from the tracks table.\
-Response: JSON array of track objects.\
+Response: JSON array of track objects.
 
 ## Pre-req's
 
