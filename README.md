@@ -29,7 +29,7 @@ git clone https://github.com/FormaServe/python-webservice.git
 Install the necessary dependencies
 
 ```bash
-pip install flask
+pip install flask jsonify
 
 ```
 
