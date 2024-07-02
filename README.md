@@ -33,7 +33,6 @@ pip install flask jsonify
 
 ```
 
-
 ## Endpoints
 
 ### Get Employee by ID
