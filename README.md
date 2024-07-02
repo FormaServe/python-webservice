@@ -17,48 +17,61 @@ It requires a copy of the SQLite sample database chinook which can be found in t
 
 ## Installation
 
-* Clone this repository to your local machine.
-* Install the necessary dependencies (e.g., Python, etc.).
-* Run the application using the provided scripts.
+Clone this repository to your local machine.
+
+```bash
+git clone https://github.com/FormaServe/python-webservice.git
+
+```
 
 **It is advised to check-out & run the section on virtual environments with python before proceeding with the install of this app.**
+
+Install the necessary dependencies
+
+```bash
+pip install flask
+
+```
+
 
 ## Endpoints
 
 ### Get Employee by ID
 
-URL: /employee/<int:employee_id>
-Method: GET
-Description: Retrieves a specific employee by their EmployeeId.
-Response: JSON object representing the employee, or a 404 error if not found.
+URL: /employee/<int:employee_id>\
+Method: GET\
+Description: Retrieves a specific employee by their EmployeeId.\
+Response: JSON object representing the employee, or a 404 error if not found.\
 
 ### Get All Employees
 
-URL: /employees
-Method: GET
-Description: Retrieves all employees from the employees table.
-Response: JSON array of employee objects.
+URL: /employees\
+Method: GET\
+Description: Retrieves all employees from the employees table.\
+Response: JSON array of employee objects.\
 
 ## Get Track by ID
 
-URL: /track/<int:track_id>
-Method: GET
-Description: Retrieves a specific track by its TrackId.
-Response: JSON object representing the track, or a 404 error if not found.
+URL: /track/<int:track_id>\
+Method: GET\
+Description: Retrieves a specific track by its TrackId.\
+Response: JSON object representing the track, or a 404 error if not found.\
 
 ## Get All Tracks
 
-URL: /tracks
-Method: GET
-Description: Retrieves all tracks from the tracks table.
-Response: JSON array of track objects.
+URL: /tracks\
+Method: GET\
+Description: Retrieves all tracks from the tracks table.\
+Response: JSON array of track objects.\
 
 ## Pre-req's
 
 Insure that you use PIP to install the following packages (pip install bottle etc).
 
-* flask
-* jsonify
+```bash
+pip install flask jsonify
+
+```
 
 ## Running
 
@@ -66,12 +79,14 @@ Start the server by running;
 
 ```bash
 python server.py
+
 ```
 
 then point your browser to the following;
 
 ```bash
-your_server:5050
+your_server:3039
+
 ```
 
 ## Virtual Environment
@@ -80,11 +95,11 @@ As with all python projects, it is recommended to run this application in a virt
 
 ### Create the Virtual Environment
 
-Use the venv module to create a virtual environment inside the project folder. Run the following command:  
+Use the venv module to create a virtual environment inside the project folder. Run the following command:
 
 ```bash
 # Run the Python command to create a virtual environment in the current directory
-python -m venv --system-site-packages ~/.venv
+python -m venv --system-site-packages .venv
 ```
 
 Replace .venv with your preferred name for the virtual environment.
@@ -96,7 +111,8 @@ To activate the virtual environment, use the appropriate command based on your o
 #### On IBM i
 
 ```bash
-source ~/.venv/bin/activate
+source .venv/bin/activate
+
 ```
 
 ### Deactivate the Virtual Environment
@@ -105,6 +121,7 @@ When you’re done working in the virtual environment, deactivate it:
 
 ```bash
 deactivate
+
 ```
 
 **Remember to activate it whenever you work on your project. 😊**

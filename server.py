@@ -122,4 +122,4 @@ def internal_server_error(e):
 
 # mainline
 if __name__ == "__main__":
-    app.run(host='localhost', port=5050, debug=True)
+    app.run(host='0.0.0.0', port=3639, debug=True)
