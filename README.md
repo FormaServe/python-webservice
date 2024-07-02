@@ -13,7 +13,7 @@ It requires a copy of the SQLite sample database chinook which can be found in t
 ## Features
 
 * Provides a web-service application
-* Provides four endpoints
+* Provides four endpoints for employees & tracks
 
 ## Installation
 
@@ -81,7 +81,7 @@ python server.py
 
 ```
 
-then point your browser to http://localhost:3639```
+then call the various endpoints as documented above.
 
 ## Virtual Environment
 
